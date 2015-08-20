@@ -1,0 +1,50 @@
+#+TITLE: Oh My Emacs Go
+#+OPTIONS: toc:nil num:nil ^:nil
+
+* Prerequisites
+  :PROPERTIES:
+  :CUSTOM_ID: go-prerequisites
+  :END:
+
+#+NAME: go-prequisites
+#+CAPTION: Prerequisites for ome-go module
+|           | Mandatory? |
+|-----------+------------|
+| [[http://golang.org][Go]]        | Yes        |
+| [[http://www.github.com/bradfitz/goimports][goimports]] | Yes        |
+|           |            |
+
+* Go-mode
+
+#+NAME: go-mode
+#+BEGIN_SRC emacs-lisp
+(ome-install 'exec-path-from-shell)
+(ome-install 'go-mode)
+(ome-install 'go-autocomplete)
+#+END_SRC
+
+Run `goimports` on save. This will add any packages that
+are used in a file to the import block automatically and run
+`gofmt`.
+
+#+NAME: goimports
+#+BEGIN_SRC emacs-lisp
+(add-hook 'go-mode-hook
+      (lambda()
+        (add-hook 'before-save-hook #'gofmt-before-save nil t)
+        (setq tab-width 4)
+        (setq indent-tabs-mode 1)
+        (setq gofmt-command "goimports")
+        (require 'go-autocomplete)
+        (require 'auto-complete-config)))
+
+
+(when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize))
+#+END_SRC
+
+#+NAME: go-flymake
+#+BEGIN_SRC emacs-lisp
+;;(add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
+;;(require 'go-flymake)
+#+END_SRC

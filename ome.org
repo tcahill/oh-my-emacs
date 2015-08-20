@@ -457,6 +457,7 @@ you really need it.
 - [[file:modules/ome-common-lisp.org][ome-common-lisp.org]]: settings for Common Lisp, mainly [[http://common-lisp.net/project/slime/][SLIME]].
 - [[file:modules/ome-clojure.org][ome-clojure.org]]: settings for Clojure.
 - [[file:modules/ome-emacs-lisp.org][ome-emacs-lisp.org]]: settings for emacs-lisp.
+- [[file:modules/ome-go.org][ome-go.org]]: settings for Golang.
 - [[file:modules/ome-java.org][ome-java.org]]: settings for Java, using [[https://github.com/senny/emacs-eclim][emacs-eclim]].
 - [[file:modules/ome-javascript.org][ome-javascript.org]]: settings for JavaScript, not perfect now.
 - [[file:modules/ome-python.org][ome-python.org]]: python settings, life is short, =elpy= is amazing.
@@ -492,6 +493,7 @@ you really need it.
 (ome-load "modules/ome-tex.org")
 (ome-load "modules/ome-web.org")
 ;; (ome-load "modules/ome-experimental.org" "smooth-scrolling" "sublimity")
+(ome-load "modules/ome-go.org")
 (ome-load "modules/ome-haskell.org")
 (ome-load "modules/ome-sml.org")
 #+END_SRC

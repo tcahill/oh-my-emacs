@@ -326,6 +326,38 @@ it globally.
 (setq org-export-with-smart-quotes t)
 #+END_SRC
 
+* Misc
+** TODO tracking
+  :PROPERTIES:
+  :CUSTOM_ID: misc
+  :END:
+The following records timestamps and notes when TODO items change
+states. Specificially:
+
+  - A timestamp is recorded when an item moves into the DONE state
+  - A note is recorded when switching to WAIT or CANCELED
+  - A timestamp is recorded when leaving the WAIT state when logging isn't
+    recorded for the state being entered.
+
+#+NAME: Track TODO state changes
+#+BEGIN_SRC emacs-lisp
+ (setq org-todo-keywords
+       '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+#+END_SRC
+
+** Org-habit
+Add org-habit module. See
+http://orgmode.org/manual/Tracking-your-habits.html. Additionally, add relevant
+paths to agenda.
+#+NAME: Add org-habit
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-modules "org-habit")
+(setq org-agenda-files '("~/logs"))
+(setq org-todo-keywords
+      '((sequence "Personal" "|" "DONE")
+        (sequence "Work" "|" "DONE")))
+#+END_SRC
+
 * Todo
 - How to handle =org-mode= format like ===?
 
